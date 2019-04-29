@@ -1,0 +1,35 @@
+{
+  "name": "makeflow-chrome-extensions",
+  "version": "1.0.0",
+  "description": "Makeflow chrome extension",
+  "main": "index.js",
+  "repository": "git@github.com:makeflow/makeflow-chrome-extensions.git",
+  "author": "Chengdu Mufan Technology Co., Ltd.",
+  "license": "MIT",
+  "scripts": {
+    "build:popup": "parcel build src/popup/index.html --out-dir bld/popup/ --public-url .",
+    "build:content-scripts": "parcel build src/content-scripts/main.ts --out-dir bld/content-scripts/",
+    "build:public": "cp -r src/public/ bld/",
+    "build": "rimraf bld && yarn build:public && yarn build:popup && yarn build:content-scripts"
+  },
+  "devDependencies": {
+    "@magicspace/configs": "^0.1.47",
+    "@magicspace/tslint-rules": "^0.1.41",
+    "@types/chrome": "^0.0.83",
+    "@types/node": "^11.13.2",
+    "@types/react": "^16.8.14",
+    "@types/react-dom": "^16.8.4",
+    "parcel-bundler": "^1.12.3",
+    "postcss-modules": "^1.4.1",
+    "prettier": "^1.17.0",
+    "rimraf": "^2.6.3",
+    "ts-node": "^8.0.3",
+    "tslint": "^5.15.0",
+    "typescript": "^3.4.3"
+  },
+  "dependencies": {
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "tslang": "^0.1.13"
+  }
+}

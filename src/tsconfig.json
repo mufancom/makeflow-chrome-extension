@@ -1,0 +1,16 @@
+{
+  "extends": "@magicspace/configs/tsconfig.json",
+  "compilerOptions": {
+    "module": "esnext",
+    "moduleResolution": "node",
+    "lib": ["esnext", "dom", "dom.iterable"],
+    "types": ["chrome"],
+    "jsx": "react",
+    "experimentalDecorators": true,
+
+    "baseUrl": ".",
+
+    "rootDir": ".",
+    "noEmit": true
+  }
+}
