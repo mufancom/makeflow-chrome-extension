@@ -9,8 +9,9 @@
   "scripts": {
     "build:popup": "parcel build src/popup/index.html --out-dir bld/popup/ --public-url .",
     "build:content-scripts": "parcel build src/content-scripts/main.ts --out-dir bld/content-scripts/",
-    "build:public": "cp -r src/public/ bld/",
-    "build": "rimraf bld && yarn build:public && yarn build:popup && yarn build:content-scripts"
+    "build:options-page": "parcel build src/options-page/index.html --out-dir bld/options-page --public-url .",
+    "build:public": "cp -r src/public/ bld/ && cp src/manifest.json bld/",
+    "build": "rimraf bld && yarn build:public && yarn build:popup && yarn build:content-scripts && yarn build:options-page"
   },
   "devDependencies": {
     "@magicspace/configs": "^0.1.47",

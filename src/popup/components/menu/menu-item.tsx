@@ -1,6 +1,6 @@
 import React, {FunctionComponent} from 'react';
 
-import './styles.css';
+import './@styles.css';
 
 export interface MenuItemProps {
   onClick(): void;
