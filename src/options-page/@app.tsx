@@ -70,8 +70,8 @@ export const App: FunctionComponent = () => {
 
   return (
     <div>
-      <h1>Makeflow Chrome Extension Options</h1>
-      <label>Makeflow 地址</label>
+      <h1>Makeflow 扩展程序设置</h1>
+      <label>Makeflow 地址:</label>
       <br />
       <input value={options.baseURL} onChange={onBaseURLChanged} />
       <br />

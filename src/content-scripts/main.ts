@@ -1,16 +1,16 @@
-import {Message, MessageResponseSender} from '../types';
+import {MessageResponseSender, MessageWithoutResponse} from '../types';
 
-import {getCreateTaskData} from './task-data-getters';
-import {navigate} from './utils';
+import {getCreateTaskData} from './@task-data-getters';
+import {navigate} from './@utils';
 
 chrome.runtime.onMessage.addListener(
-  (request: Message, _, sendResponse: MessageResponseSender) => {
-    switch (request.type) {
+  (message: MessageWithoutResponse, _, sendResponse: MessageResponseSender) => {
+    switch (message.type) {
       case 'get-create-task-data':
         sendResponse(getCreateTaskData());
         break;
       case 'navigation':
-        navigate(request.url);
+        navigate(message.request.url);
         sendResponse({});
         break;
     }

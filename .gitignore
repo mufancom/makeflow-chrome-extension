@@ -33,3 +33,7 @@ debug/
 # Testing files
 
 /test.*
+
+# Private key file for extension package.
+
+/private-key.pem

@@ -1,6 +1,5 @@
-import {navigateToMakeflow} from './menu-handlers/common';
-import {handleCreateTask} from './menu-handlers/task';
-import {Menu} from './types';
+import {handleCreateTask, navigateToMakeflow} from './@menu-handlers';
+import {Menu} from './@types';
 
 export const menus: Menu[] = [
   {

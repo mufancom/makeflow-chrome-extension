@@ -9,12 +9,13 @@ export async function getTabs(
   });
 }
 
-export async function sendMessageToTab<
-  TMessage extends Message,
-  TResponse extends unknown
->(tabId: number, message: TMessage): Promise<TResponse> {
+export async function sendMessageToTab<TType extends Message['type']>(
+  tabId: number,
+  type: TType,
+  request: Extract<Message, {type: TType}>['request'],
+): Promise<Extract<Message, {type: TType}>['response']> {
   return new Promise(resolve => {
-    chrome.tabs.sendMessage(tabId, message, resolve);
+    chrome.tabs.sendMessage(tabId, {type, request}, resolve);
   });
 }
 
@@ -22,7 +23,7 @@ export async function getOption<TKey extends keyof Options>(
   key: TKey,
 ): Promise<Options[TKey]> {
   return new Promise(resolve => {
-    chrome.storage.local.get({options: DEFAULT_OPTIONS}, ({options}) => {
+    chrome.storage.sync.get({options: DEFAULT_OPTIONS}, ({options}) => {
       resolve(options[key]);
     });
   });
@@ -30,12 +31,12 @@ export async function getOption<TKey extends keyof Options>(
 
 export async function getOptions(): Promise<Options> {
   return new Promise(resolve => {
-    chrome.storage.local.get({options: DEFAULT_OPTIONS}, ({options}) => {
+    chrome.storage.sync.get({options: DEFAULT_OPTIONS}, ({options}) => {
       resolve(options as Options);
     });
   });
 }
 
 export function setOptions(options: Options): void {
-  chrome.storage.local.set({options});
+  chrome.storage.sync.set({options});
 }

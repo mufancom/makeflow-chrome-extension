@@ -11,9 +11,8 @@ export function getGitLabIssueTitle(): string | undefined {
     return undefined;
   }
 
-  let issueTitleElement = document.querySelector('.issue-details .title');
+  let issueTitleElement =
+    document.querySelector('.issue-details .title') || undefined;
 
-  return issueTitleElement
-    ? issueTitleElement.textContent || undefined
-    : undefined;
+  return (issueTitleElement && issueTitleElement.textContent) || undefined;
 }

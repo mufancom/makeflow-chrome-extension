@@ -1,5 +1,5 @@
+import {CreateTaskData} from '../../types';
 import {getOption, getTabs, sendMessageToTab} from '../../utils';
-import {CreateTaskData} from '../types';
 
 export async function handleCreateTask(): Promise<void> {
   let [tab] = await getTabs({
@@ -11,9 +11,7 @@ export async function handleCreateTask(): Promise<void> {
   let data: CreateTaskData | undefined;
 
   if (tabId) {
-    data = await sendMessageToTab(tabId, {
-      type: 'get-create-task-data',
-    });
+    data = await sendMessageToTab(tabId, 'get-create-task-data', undefined);
   }
 
   await navigateToCreateTask(data);
@@ -41,9 +39,6 @@ async function navigateToCreateTask(data?: CreateTaskData): Promise<void> {
       active: true,
     });
 
-    await sendMessageToTab(tabId, {
-      type: 'navigation',
-      url,
-    });
+    await sendMessageToTab(tabId, 'navigation', {url});
   }
 }

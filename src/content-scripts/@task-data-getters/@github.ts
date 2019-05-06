@@ -11,11 +11,8 @@ export function getGitHubIssueTitle(): string | undefined {
     return undefined;
   }
 
-  let issueTitleElement = document.querySelector(
-    '.gh-header-title .js-issue-title',
-  );
+  let issueTitleElement =
+    document.querySelector('.gh-header-title .js-issue-title') || undefined;
 
-  return issueTitleElement
-    ? issueTitleElement.textContent || undefined
-    : undefined;
+  return (issueTitleElement && issueTitleElement.textContent) || undefined;
 }
