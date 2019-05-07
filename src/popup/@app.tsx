@@ -1,12 +1,12 @@
 import React, {ReactElement} from 'react';
 
 import {Menu, MenuItem} from './@components';
-import {menus} from './@menus';
+import {menuItems} from './@menu-items';
 
 export function App(): ReactElement {
   return (
     <Menu>
-      {menus.map(({text, handler}) => (
+      {menuItems.map(({text, handler}) => (
         <MenuItem key={text} onClick={handler}>
           {text}
         </MenuItem>

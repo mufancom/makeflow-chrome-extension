@@ -1,7 +1,7 @@
 import {handleCreateTask, navigateToMakeflow} from './@menu-handlers';
-import {Menu} from './@types';
+import {MenuItem} from './@types';
 
-export const menus: Menu[] = [
+export const menuItems: MenuItem[] = [
   {
     text: '打开 Makeflow',
     handler: navigateToMakeflow,
