@@ -1,0 +1,28 @@
+{
+  "name": "Makeflow",
+  "version": "1.0",
+  "description": "Makeflow chrome extension",
+  "manifest_version": 2,
+  "icons": {
+    "16": "logo.png",
+    "48": "logo.png",
+    "128": "logo.png"
+  },
+  "browser_action": {
+    "default_icon": "logo.png",
+    "default_title": "Makeflow chrome extension",
+    "default_popup": "popup/index.html"
+  },
+  "options_ui": {
+    "page": "options-page/index.html",
+    "chrome_style": true
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content-scripts/main.js"]
+    }
+  ],
+  "permissions": ["tabs", "storage", "http://*/*", "https://*/*"],
+  "homepage_url": "https://makeflow.com"
+}
