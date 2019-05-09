@@ -9,7 +9,7 @@
     "build:popup": "parcel build src/popup/index.html --out-dir bld/popup/ --public-url .",
     "build:content-scripts": "parcel build src/content-scripts/main.ts --out-dir bld/content-scripts/",
     "build:options-page": "parcel build src/options-page/index.html --out-dir bld/options-page --public-url .",
-    "build:public": "cp -r src/public/ bld/ && cp src/manifest.json bld/",
+    "build:public": "shx cp -r src/public/ bld/ && shx cp src/manifest.json bld/",
     "build": "rimraf bld && yarn build:public && yarn build:popup && yarn build:content-scripts && yarn build:options-page"
   },
   "devDependencies": {
@@ -23,6 +23,7 @@
     "postcss-modules": "^1.4.1",
     "prettier": "^1.17.0",
     "rimraf": "^2.6.3",
+    "shx": "^0.3.2",
     "ts-node": "^8.0.3",
     "tslint": "^5.15.0",
     "typescript": "^3.4.3"
