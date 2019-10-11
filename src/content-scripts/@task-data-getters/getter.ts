@@ -24,8 +24,14 @@ export function getCreateTaskData(): CreateTaskData {
 
   return {
     brief: brief && brief.trim(),
-    metadata: {
-      ref: document.URL,
-    },
+    outputs: [
+      {
+        name: 'task-ref',
+        value: {
+          type: 'raw',
+          value: document.URL,
+        },
+      },
+    ],
   };
 }
