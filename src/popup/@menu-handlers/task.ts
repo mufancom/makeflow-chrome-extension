@@ -20,7 +20,7 @@ export async function handleCreateTask(): Promise<void> {
 async function navigateToCreateTask(data?: CreateTaskData): Promise<void> {
   let makeflowBaseURL = await getOption('baseURL');
 
-  let url = `${makeflowBaseURL}/app/workbench?create-task=${
+  let url = `/workbench?create-task=${
     data ? encodeURIComponent(JSON.stringify(data)) : ''
   }`;
 
