@@ -24,7 +24,7 @@ async function navigateToCreateTask(data?: CreateTaskData): Promise<void> {
     data ? encodeURIComponent(JSON.stringify(data)) : ''
   }`;
 
-  let url = `${makeflowBaseURL.origin}/app/${path}`;
+  let url = `${makeflowBaseURL.origin}/app${path}`;
 
   let [tab] = await getTabs({
     url: `${makeflowBaseURL.origin}/app*`,
