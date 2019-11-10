@@ -18,14 +18,16 @@ export async function handleCreateTask(): Promise<void> {
 }
 
 async function navigateToCreateTask(data?: CreateTaskData): Promise<void> {
-  let makeflowBaseURL = await getOption('baseURL');
+  let makeflowBaseURL = new URL(await getOption('baseURL'));
 
-  let url = `${makeflowBaseURL}/app/workbench?create-task=${
+  let path = `/workbench?create-task=${
     data ? encodeURIComponent(JSON.stringify(data)) : ''
   }`;
 
+  let url = `${makeflowBaseURL.origin}/app${path}`;
+
   let [tab] = await getTabs({
-    url: `*://${new URL(makeflowBaseURL).hostname}/app*`,
+    url: `${makeflowBaseURL.origin}/app*`,
   });
 
   let tabId = tab && tab.id;
@@ -39,6 +41,6 @@ async function navigateToCreateTask(data?: CreateTaskData): Promise<void> {
       active: true,
     });
 
-    await sendMessageToTab(tabId, 'navigation', {url});
+    await sendMessageToTab(tabId, 'navigation', {url: path});
   }
 }
