@@ -1,6 +1,6 @@
 {
   "name": "makeflow-chrome-extension",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Makeflow chrome extension",
   "repository": "https://github.com/makeflow/makeflow-chrome-extension.git",
   "author": "Chengdu Mufan Technology Co., Ltd.",
