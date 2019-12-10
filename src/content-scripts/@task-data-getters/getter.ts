@@ -1,31 +1,28 @@
 import {CreateTaskData} from '../../types';
 
-import {getGitHubIssueTitle} from './@github';
-import {getGitLabIssueTitle} from './@gitlab';
+import {getDefaultTaskData} from './@default';
+import {getGitHubTaskData} from './@github';
+import {getGitLabTaskData} from './@gitlab';
 
-type TaskBriefGetter = () => string | undefined;
+type TaskDataGetter = () => CreateTaskData | undefined;
 
-const taskBriefGetters: TaskBriefGetter[] = [
-  getGitHubIssueTitle,
-  getGitLabIssueTitle,
+const taskDataGetters: TaskDataGetter[] = [
+  getGitHubTaskData,
+  getGitLabTaskData,
+  getDefaultTaskData,
 ];
 
 export function getCreateTaskData(): CreateTaskData {
-  let brief: string | undefined;
+  let result: CreateTaskData | undefined;
 
-  for (let getter of taskBriefGetters) {
-    let result = getter();
+  for (let getter of taskDataGetters) {
+    let data = getter();
 
-    if (result !== undefined) {
-      brief = result;
+    if (data !== undefined) {
+      result = data;
       break;
     }
   }
 
-  return {
-    brief: brief && brief.trim(),
-    metadata: {
-      ref: document.URL,
-    },
-  };
+  return result!;
 }
