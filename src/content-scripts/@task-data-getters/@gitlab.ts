@@ -15,7 +15,7 @@ export function getGitLabTaskData(): CreateTaskData | undefined {
 
   let issueTitleElement = document.querySelector('.issue-details .title');
 
-  let issueTitle = issueTitleElement?.textContent || document.title;
+  let issueTitle = issueTitleElement?.textContent ?? document.title;
 
   return {
     brief: issueTitle.trim(),

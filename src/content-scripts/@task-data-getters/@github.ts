@@ -17,7 +17,7 @@ export function getGitHubTaskData(): CreateTaskData | undefined {
     '.gh-header-title .js-issue-title',
   );
 
-  let issueTitle = issueTitleElement?.textContent || document.title;
+  let issueTitle = issueTitleElement?.textContent ?? document.title;
 
   return {
     brief: issueTitle.trim(),
