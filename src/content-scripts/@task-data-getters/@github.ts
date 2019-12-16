@@ -1,4 +1,6 @@
-export function getGitHubIssueTitle(): string | undefined {
+import {CreateTaskData} from '../../types';
+
+export function getGitHubTaskData(): CreateTaskData | undefined {
   let siteNameElement = document.head.querySelector(
     'meta[property="og:site_name"]',
   );
@@ -15,5 +17,21 @@ export function getGitHubIssueTitle(): string | undefined {
     '.gh-header-title .js-issue-title',
   );
 
-  return (issueTitleElement && issueTitleElement.textContent) || undefined;
+  let issueTitle = issueTitleElement?.textContent ?? document.title;
+
+  return {
+    brief: issueTitle.trim(),
+    outputs: [
+      {
+        name: 'metadata:source',
+        value: {
+          type: 'raw',
+          value: {
+            type: 'github',
+            url: location.href,
+          },
+        },
+      },
+    ],
+  };
 }
