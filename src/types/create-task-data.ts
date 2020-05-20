@@ -7,5 +7,6 @@ export interface ValueDescriptor {
 
 export interface CreateTaskData {
   brief?: string;
+  description?: string;
   outputs?: Dict<ValueDescriptor>;
 }

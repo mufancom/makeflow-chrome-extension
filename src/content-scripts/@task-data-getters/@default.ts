@@ -3,17 +3,14 @@ import {CreateTaskData} from '../../types';
 export function getDefaultTaskData(): CreateTaskData {
   return {
     brief: document.title.trim(),
-    outputs: [
-      {
-        name: 'metadata_source',
+    outputs: {
+      metadata_source: {
+        type: 'raw',
         value: {
-          type: 'raw',
-          value: {
-            type: 'unknown',
-            url: location.href,
-          },
+          type: 'unknown',
+          url: location.href,
         },
       },
-    ],
+    },
   };
 }

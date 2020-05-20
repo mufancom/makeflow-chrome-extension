@@ -19,8 +19,11 @@ export function getGitHubTaskData(): CreateTaskData | undefined {
 
   let issueTitle = issueTitleElement?.textContent ?? document.title;
 
+  let issueDescription = document.querySelector<HTMLTextAreaElement>('textarea[name="issue[body]"]')?.value;
+
   return {
     brief: issueTitle.trim(),
+    description: issueDescription?.trim(),
     outputs: {
       'metadata_source': {
         type: 'raw',
