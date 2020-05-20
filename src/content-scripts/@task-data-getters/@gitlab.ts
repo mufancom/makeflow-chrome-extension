@@ -19,17 +19,14 @@ export function getGitLabTaskData(): CreateTaskData | undefined {
 
   return {
     brief: issueTitle.trim(),
-    outputs: [
-      {
-        name: 'metadata_source',
+    outputs: {
+      'metadata_source': {
+        type: 'raw',
         value: {
-          type: 'raw',
-          value: {
-            type: 'github',
-            url: location.href,
-          },
+          type: 'github',
+          url: location.href,
         },
-      },
-    ],
+      }
+    }
   };
 }
