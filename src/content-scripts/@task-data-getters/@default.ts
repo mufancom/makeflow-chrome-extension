@@ -5,7 +5,7 @@ export function getDefaultTaskData(): CreateTaskData {
     brief: document.title.trim(),
     outputs: [
       {
-        name: 'metadata:source',
+        name: 'metadata_source',
         value: {
           type: 'raw',
           value: {

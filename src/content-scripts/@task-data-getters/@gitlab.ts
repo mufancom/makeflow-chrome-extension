@@ -21,7 +21,7 @@ export function getGitLabTaskData(): CreateTaskData | undefined {
     brief: issueTitle.trim(),
     outputs: [
       {
-        name: 'metadata:source',
+        name: 'metadata_source',
         value: {
           type: 'raw',
           value: {
